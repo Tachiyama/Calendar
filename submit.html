@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" Content="text/html;charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+<title>Calender</title>
+
+<!--CSS-->
+
+<style>
+table.sche{border:1px solid #a9a9a9;padding:0px;margin:0px;border-collapse:collapse;}
+td{vertical-align:top;margin:0px;padding:2px;font-size:0.75em;height:20px;}
+td.top{border-bottom:1px solid #a9a9a9;text-align:center;}
+td.time{background-color:#f0f8ff;text-align:right;border-right:1px double #a9a9a9;padding-right:5px;}
+td.timeb{background-color:#f0f8ff;border-bottom:1px solid #a9a9a9;border-right:1px double #a9a9a9;}
+td.contents{background-color:#ffffff;border-bottom:1px dotted #a9a9a9;}
+td.contentsb{background-color:#ffffff;border-bottom:1px solid #a9a9a9;}
+td.ex{background-color:#ffebcd;border:1px solid #8b0000;}
+img{border:0px;}
+p{font-size:0.75em;}
+
+#contents{margin:0;padding:0;width:710px;}
+#left{margin:0;padding:0;float:left;width:400px;}
+#right{margin:0;padding:0;float:right;width:300px;background-color:#ffffff;}
+#contents:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+</style>
+
+</head>
+<body>
+
+<p>Registration</p>
+
+<div id="contents">
+
+<div id="left">
+
+<table class="sche">
+<tr><td class="top" style="width:80px">TIME</td><td class="top" style="width:300px">SCHEDULE</td></tr>
+<!--TIME/COMENT-->
+<tr><td class="time">00:00</td><td class="contents"></td></tr>
+<!--COMENT SPACE-->
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">01:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">02:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">03:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">04:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">05:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">06:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">07:00</td><td class="ex" rowspan="3"></td></tr>
+<tr><td class="timeb"></td></tr>
+<tr><td class="time">08:00</td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">09:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">10:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">11:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">12:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">13:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">14:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">15:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">16:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">17:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">18:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">19:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">20:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">21:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">22:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+<tr><td class="time">23:00</td><td class="contents"></td></tr>
+<tr><td class="timeb"></td><td class="contentsb"></td></tr>
+
+</table>
+
+</div>
+
+<div id="right">
+<!--USE POST METHOD TO TOMCAT-->
+<form method="post" action="">
+<!--till 2020 to 2025. type Select (bar) Value=Year-->
+<table>
+<tr>
+<td nowrap>DATE and TIME</td><td>
+<select name="YEAR">
+<option value="2020">2020
+<option value="2021" selected>2021
+<option value="2022">2022
+<option value="2023">2023
+<option value="2024">2024
+<option value="2025">2025
+</select>
+
+<!--type Select(bar) Value=Month-->
+<select name="MONTH">
+<option value="1" selected>1
+<option value="2">2
+<option value="3">3
+<option value="4">4
+<option value="5">5
+<option value="6">6
+<option value="7">7
+<option value="8">8
+<option value="9">9
+<option value="10">10
+<option value="11">11
+<option value="12">12
+</select>
+
+<!--type Select(bar) Value=Day-->
+<select name="DAY">
+<option value="1">1
+<option value="2">2
+<option value="3">3
+<option value="4">4
+<option value="5">5
+<option value="6">6
+<option value="7">7
+<option value="8">8
+<option value="9">9
+<option value="10">10
+<option value="11">11
+<option value="12">12
+<option value="13">13
+<option value="14">14
+<option value="15">15
+<option value="16">16
+<option value="17">17
+<option value="18">18
+<option value="19">19
+<option value="20">20
+<option value="21">21
+<option value="22">22
+<!--What is 【selected】→ function/rather should write or not/ If should write this, Where, All?, -->
+<option value="23" selected>23
+<option value="24">24
+<option value="25">25
+<option value="26">26
+<option value="27">27
+<option value="28">28
+<option value="29">29
+<option value="30">30
+<option value="31">31
+</select>
+</td></tr>
+
+<!--type Select(bar) Value=Hour-->
+<tr><td nowrap>Times of Day</td><td>
+<select name="SHOUR">
+<option value="0">0
+<option value="1">1
+<option value="2">2
+<option value="3">3
+<option value="4">4
+<option value="5">5
+<option value="6">6
+<option value="7">7
+<!--What is 【selected】→ function/rather should write or not/ If should write this, Where, All?, -->
+<option value="" selected>--
+<option value="8">8
+<option value="9">9
+<option value="10">10
+<option value="11">11
+<option value="12">12
+<option value="13">13
+<option value="14">14
+<option value="15">15
+<option value="16">16
+<option value="17">17
+<option value="18">18
+<option value="19">19
+<option value="20">20
+<option value="21">21
+<option value="22">22
+<option value="23">23
+</select>
+
+<!--type Select(bar) Value=Minute-->
+<select name="SMINUTE">
+<option value="0">00
+<option value="30">30
+</select>
+~
+<!--type Select(bar) Value=Hour-->
+<!--The above SHOUR and SMINUTE is start of schedule time, The below is is end os scjedule time-->
+<select name="EHOUR">
+<!--What is 【--】→ function/rather should write or not/ If should write this, Where, All?, -->
+<option value="">--
+<option value="0">0
+<option value="1">1
+<option value="2">2
+<option value="3">3
+<option value="4">4
+<option value="5">5
+<option value="6">6
+<option value="7">7
+<!--What is 【--】→ function/rather should write or not/ If should write this, Where, All?, -->
+<option value="" selected>--
+<option value="8">8
+<option value="9">9
+<option value="10">10
+<option value="11">11
+<option value="12">12
+<option value="13">13
+<option value="14">14
+<option value="15">15
+<option value="16">16
+<option value="17">17
+<option value="18">18
+<option value="19">19
+<option value="20">20
+<option value="21">21
+<option value="22">22
+<option value="23">23
+</select>
+
+<!--What is 【selected】→ function/rather should write or not/ If should write this, Where, All?, -->
+<select name="EMINUTE">
+<option value="">--
+<option value="0">00
+<option value="30">30
+</select>
+</td></tr>
+
+<tr>
+<td nowrap>SCHEDULE</td>
+<!--Text type/Method is "name"="PLAN"/write till 100-->
+<td><input type="text" name="PLAN" value="" size="30" maxlength="100">
+</td>
+</tr>
+
+<tr>
+<td valign="top" nowrap>CONTENTS</td>
+<!--memo// 【input type=text】is able to erite only a line
+           【textarea】is able to decide how many lines it want to write.(cols is width,rows is line)//-->
+<td><textarea name="MEMO" cols="30" rows="10" wrap="virtual"></textarea></td>
+</tr>
+</table>
+
+<p>
+<input type="submit" name="Register" value="Registration"> <input type="reset" value="Remake">
+<p>
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>
